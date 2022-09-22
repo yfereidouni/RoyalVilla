@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RoyalVilla.Core.Entities\RoyalVilla.Core.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

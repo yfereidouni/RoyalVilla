@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalVilla.Core.Entities.Common;
-
-public abstract class BaseEntity
+namespace RoyalVilla.Infrastructures.DAL.EF.Villas
 {
-    public int Id { get; set; }
+    internal class VillaRepository
+    {
+    }
 }

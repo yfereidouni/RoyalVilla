@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="VillasNumbers\" />
-    <Folder Include="Villas\" />
   </ItemGroup>
 
 </Project>
