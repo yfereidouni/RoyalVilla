@@ -1,4 +1,5 @@
-﻿using RoyalVilla.Core.Contracts.Common;
+﻿using Microsoft.EntityFrameworkCore;
+using RoyalVilla.Core.Contracts.Common;
 using RoyalVilla.Core.Entities.Common;
 using System;
 using System.Collections.Generic;
@@ -11,19 +12,42 @@ namespace RoyalVilla.Infrastructures.DAL.EF.Common;
 
 public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity, new()
 {
-    public Task CreateAsync(T entity)
+    private readonly ApplicationDbContext _dbContext;
+
+    public BaseRepository(ApplicationDbContext dbContext)
     {
-        throw new NotImplementedException();
+        _dbContext = dbContext;
+    }
+    public async Task CreateAsync(T entity)
+    {
+        _dbContext.Set<T>().Add(entity);
+        await SaveAsync();
     }
 
-    public Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null)
+    public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null)
     {
-        throw new NotImplementedException();
+        IQueryable<T> query = _dbContext.Set<T>();
+
+        if (filter != null)
+            query = query.Where(filter);
+
+        //Query execute here! This is "Deferred execution"
+        return await query.ToListAsync();
+
     }
 
-    public Task<T> GetAsync(Expression<Func<T, bool>> filter = null, bool tracked = true)
+    public async Task<T> GetAsync(Expression<Func<T, bool>> filter = null, bool tracked = true)
     {
-        throw new NotImplementedException();
+        IQueryable<T> query = _dbContext.Set<T>();
+
+        if (!tracked)
+            query.AsNoTracking();
+        
+        if (filter != null)
+            query = query.Where(filter);
+
+        //Query execute here! This is "Deferred execution"
+        return await query.FirstOrDefaultAsync();
     }
 
     public Task RemoveAsync(T entity)
@@ -31,8 +55,8 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity, new()
         throw new NotImplementedException();
     }
 
-    public Task SaveAsync()
+    public async Task SaveAsync()
     {
-        throw new NotImplementedException();
+        await _dbContext.SaveChangesAsync();
     }
 }
