@@ -1,5 +1,5 @@
 ﻿using RoyalVilla.Core.Contracts.Common;
-using RoyalVilla.Core.Entities.Villas;
+using RoyalVilla.Core.Entities.VillasNumbers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RoyalVilla.Core.Entities.Villas;
+using RoyalVilla.Core.Entities.VillasNumbers;
 using RoyalVilla.Infrastructures.DAL.EF.Villas;
 using RoyalVilla.Infrastructures.DAL.EF.VillasNumbers;
 using System;
@@ -22,6 +23,9 @@ namespace RoyalVilla.Infrastructures.DAL.EF.Common
         {
             modelBuilder.ApplyConfiguration(new VillaConfiguration());
             modelBuilder.ApplyConfiguration(new VillaNumberConfiguration());
+
+            modelBuilder.Entity<VillaNumber>().HasIndex(p => p.VillaNo).IsUnique();
+
             base.OnModelCreating(modelBuilder);
         }
     }

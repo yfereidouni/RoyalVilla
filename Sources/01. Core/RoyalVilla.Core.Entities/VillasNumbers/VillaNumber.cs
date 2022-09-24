@@ -6,12 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RoyalVilla.Core.Entities.Common;
+using RoyalVilla.Core.Entities.Villas;
+using Microsoft.EntityFrameworkCore;
 
-namespace RoyalVilla.Core.Entities.Villas;
+namespace RoyalVilla.Core.Entities.VillasNumbers;
 
 public class VillaNumber : BaseEntity
 {
     //[Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+   
     public int VillaNo { get; set; }
 
     [ForeignKey("Villa")]
