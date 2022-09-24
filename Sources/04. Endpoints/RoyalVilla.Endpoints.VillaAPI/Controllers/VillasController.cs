@@ -18,11 +18,11 @@ public class VillasController : ControllerBase
     private readonly IMapper _mapper;
     private readonly APIResponse _response;
 
-    public VillasController(IVillaRepository villaRepository,IMapper mapper,APIResponse response)
+    public VillasController(IVillaRepository villaRepository,IMapper mapper)
     {
         _villaRepository = villaRepository;
         _mapper = mapper;
-        _response = response;
+        _response = new();
     }
 
     [HttpGet]
@@ -48,14 +48,15 @@ public class VillasController : ControllerBase
 
         return _response;
     }
-    /*
-    [HttpGet("id:int", Name = "GetVilla")]
+    
+    [HttpGet("id", Name = "GetVilla")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     //[ProducesResponseType(200, Type = typeof(VillaDTO))]
     public async Task<ActionResult<APIResponse>> GetVilla(int id)
     {
+        
         try
         {
             if (id == 0)
@@ -88,7 +89,7 @@ public class VillasController : ControllerBase
 
         return _response;
     }
-
+    
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -124,8 +125,9 @@ public class VillasController : ControllerBase
 
         return _response;
     }
-
-    [HttpDelete("id:int", Name = "DeleteVilla")]
+    
+    
+    [HttpDelete("id", Name = "DeleteVilla")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -161,8 +163,8 @@ public class VillasController : ControllerBase
 
         return _response;
     }
-
-    [HttpPut("id:int", Name = "UpdateVilla")]
+    
+    [HttpPut("id", Name = "UpdateVilla")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -193,8 +195,8 @@ public class VillasController : ControllerBase
 
         return _response;
     }
-
-    [HttpPatch("id:int", Name = "UpdatePartialVilla")]
+    
+    [HttpPatch("id", Name = "UpdatePartialVilla")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -221,5 +223,5 @@ public class VillasController : ControllerBase
 
         return NoContent();
     }
-    */
+    
 }

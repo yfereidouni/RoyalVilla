@@ -17,9 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\01. Core\RoyalVilla.Core.Contracts\RoyalVilla.Core.Contracts.csproj" />
     <ProjectReference Include="..\..\01. Core\RoyalVilla.Core.Entities\RoyalVilla.Core.Entities.csproj" />
-    <ProjectReference Include="..\..\02. Services\RoyalVilla.Services.ApplicationServices\RoyalVilla.Services.ApplicationServices.csproj" />
     <ProjectReference Include="..\..\03. Infrastructures\RoyalVilla.Infrastructures.DAL.EF\RoyalVilla.Infrastructures.DAL.EF.csproj" />
-    <ProjectReference Include="..\..\03. Infrastructures\RoyalVilla.Infrastructures.DAL.Fake\RoyalVilla.Infrastructures.DAL.Fake.csproj" />
   </ItemGroup>
 
 </Project>
