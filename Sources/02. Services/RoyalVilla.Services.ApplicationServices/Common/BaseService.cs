@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace RoyalVilla.Services.ApplicationServices.Common;
 
-public class BaseService
+public abstract class BaseService
 {
 }

@@ -2,7 +2,7 @@
 
 namespace RoyalVilla.Endpoints.VillaAPI.Models.DTOs;
 
-public class VillaDTO
+public sealed class VillaDTO
 {
     public int Id { get; set; }
     [Required]

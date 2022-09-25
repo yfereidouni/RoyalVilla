@@ -2,7 +2,7 @@
 
 namespace RoyalVilla.Endpoints.VillaAPI.Models.DTOs;
 
-public class VillaCreateDTO
+public sealed class VillaCreateDTO
 {
     [Required]
     [MaxLength(30, ErrorMessage = "Max length is 30 chars")]

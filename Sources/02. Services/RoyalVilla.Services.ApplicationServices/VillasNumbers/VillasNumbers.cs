@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace RoyalVilla.Services.ApplicationServices.VillasNumbers;
 
-public class VillasNumbers
+public sealed class VillasNumbers
 {
 }

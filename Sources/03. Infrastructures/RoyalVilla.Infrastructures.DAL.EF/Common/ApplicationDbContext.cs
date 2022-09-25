@@ -9,24 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoyalVilla.Infrastructures.DAL.EF.Common
+namespace RoyalVilla.Infrastructures.DAL.EF.Common;
+
+public sealed class ApplicationDbContext : DbContext
 {
-    public sealed class ApplicationDbContext : DbContext
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options) { }
+
+    public DbSet<Villa> Villas { get; set; }
+    public DbSet<VillaNumber> VillasNumbers { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options) { }
+        modelBuilder.ApplyConfiguration(new VillaConfiguration());
+        modelBuilder.ApplyConfiguration(new VillaNumberConfiguration());
 
-        public DbSet<Villa> Villas { get; set; }
-        public DbSet<VillaNumber> VillasNumbers { get; set; }
+        modelBuilder.Entity<VillaNumber>().HasIndex(p => p.VillaNo).IsUnique();
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfiguration(new VillaConfiguration());
-            modelBuilder.ApplyConfiguration(new VillaNumberConfiguration());
-
-            modelBuilder.Entity<VillaNumber>().HasIndex(p => p.VillaNo).IsUnique();
-
-            base.OnModelCreating(modelBuilder);
-        }
+        base.OnModelCreating(modelBuilder);
     }
 }

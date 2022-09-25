@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RoyalVilla.Infrastructures.DAL.EF.Common;
 
-public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
+public sealed class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
 {
     public ApplicationDbContext CreateDbContext(string[] args)
     {

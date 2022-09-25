@@ -12,7 +12,7 @@ namespace RoyalVilla.Endpoints.VillaAPI.Controllers;
 //[Route("api/[controller]")]
 [Route("api/Villas")]
 [ApiController]
-public class VillasController : ControllerBase
+public sealed class VillasController : ControllerBase
 {
     private readonly IVillaRepository _villaRepository;
     private readonly IMapper _mapper;
