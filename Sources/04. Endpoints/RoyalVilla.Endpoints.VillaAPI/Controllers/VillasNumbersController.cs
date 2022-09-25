@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RoyalVilla.Core.Contracts.Villas;
 using RoyalVilla.Core.Contracts.VillasNumbers;
+using RoyalVilla.Core.Entities.Villas;
 using RoyalVilla.Core.Entities.VillasNumbers;
 using RoyalVilla.Endpoints.VillaAPI.Models;
 using RoyalVilla.Endpoints.VillaAPI.Models.DTOs;
@@ -192,25 +193,20 @@ public class VillasNumbersController : ControllerBase
     {
         try
         {
-
-
             if (villaDTO == null || villaNo != villaDTO.VillaNo)
             {
                 _response.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 return BadRequest(_response);
             }
 
+            var villaNumberUpdate =await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
+            villaNumberUpdate.VillaNo = villaDTO.VillaNo;
+            villaNumberUpdate.UpdatedDate= DateTime.Now;
+            villaNumberUpdate.SpecialDetails = villaDTO.SpecialDetails;
 
-            if (await _villaRepository.GetAsync(u => u.Id == villaDTO.VillaId) == null)
-            {
-                ModelState.AddModelError("CustomError", "Villa ID is Invalid!");
-                return BadRequest(ModelState);
+            //VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
 
-            }
-
-            VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
-
-            _response.Result = await _villaNumberRepository.UpdateAsync(model);
+            await _villaNumberRepository.UpdateAsync(villaNumberUpdate);
 
             _response.StatusCode = System.Net.HttpStatusCode.NoContent;
             _response.IsSuccess = true;
@@ -224,6 +220,7 @@ public class VillasNumbersController : ControllerBase
         }
 
         return _response;
+
     }
 
     [HttpPatch("villaNo", Name = "UpdatePartialVillaNumber")]
@@ -245,7 +242,14 @@ public class VillasNumbersController : ControllerBase
 
         //Syntax for JsonPatchDocument
         patchDTO.ApplyTo(villaDTO, ModelState);
-        VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
+
+        //VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
+
+        var villaNumberPatch = await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
+        villaNumberPatch.VillaNo = villaDTO.VillaNo;
+        villaNumberPatch.UpdatedDate = DateTime.Now;
+        villaNumberPatch.SpecialDetails = villaDTO.SpecialDetails;
+
 
         if (await _villaRepository.GetAsync(u => u.Id == villaDTO.VillaId) == null)
         {
@@ -253,7 +257,7 @@ public class VillasNumbersController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        await _villaNumberRepository.UpdateAsync(model);
+        await _villaNumberRepository.UpdateAsync(villaNumberPatch);
 
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
