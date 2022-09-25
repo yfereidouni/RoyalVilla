@@ -17,7 +17,7 @@ namespace MagicVilla.VillaAPI.Controllers;
 //[Route("api/[controller]")]
 [Route("api/VillasNumbers")]
 [ApiController]
-public class VillasNumbersController : ControllerBase
+public sealed class VillasNumbersController : ControllerBase
 {
     protected APIResponse _response;
     private readonly IVillaRepository _villaRepository;

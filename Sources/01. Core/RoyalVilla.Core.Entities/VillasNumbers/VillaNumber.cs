@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RoyalVilla.Core.Entities.VillasNumbers;
 
-public class VillaNumber : BaseEntity
+public sealed class VillaNumber : BaseEntity
 {
     //[Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
    

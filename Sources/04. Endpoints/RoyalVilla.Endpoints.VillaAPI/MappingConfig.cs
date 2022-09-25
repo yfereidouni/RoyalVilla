@@ -6,7 +6,7 @@ using System.Runtime;
 
 namespace RoyalVilla.Endpoints.VillaAPI;
 
-public class MappingConfig : Profile
+public sealed class MappingConfig : Profile
 {
     public MappingConfig()
     {
