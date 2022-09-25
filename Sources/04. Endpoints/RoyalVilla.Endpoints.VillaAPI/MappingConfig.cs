@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RoyalVilla.Core.Entities.Villas;
+using RoyalVilla.Core.Entities.VillasNumbers;
 using RoyalVilla.Endpoints.VillaAPI.Models.DTOs;
 using System.Runtime;
 

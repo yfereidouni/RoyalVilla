@@ -1,9 +1,11 @@
-﻿using RoyalVilla.Core.Contracts.VillasNumbers;
-using RoyalVilla.Core.Entities.Villas;
+﻿using Microsoft.EntityFrameworkCore;
+using RoyalVilla.Core.Contracts.VillasNumbers;
+using RoyalVilla.Core.Entities.VillasNumbers;
 using RoyalVilla.Infrastructures.DAL.EF.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RoyalVilla.Core.Entities.Villas;
+using RoyalVilla.Core.Entities.VillasNumbers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

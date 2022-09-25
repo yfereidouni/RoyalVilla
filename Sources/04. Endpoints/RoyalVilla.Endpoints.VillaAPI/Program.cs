@@ -3,6 +3,8 @@ using RoyalVilla.Infrastructures.DAL.EF.Villas;
 using RoyalVilla.Endpoints.VillaAPI;
 using RoyalVilla.Infrastructures.DAL.EF.Common;
 using Microsoft.EntityFrameworkCore;
+using RoyalVilla.Core.Contracts.VillasNumbers;
+using RoyalVilla.Infrastructures.DAL.EF.VillasNumbers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
 builder.Services.AddScoped<IVillaRepository, VillaRepository>();
+builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
 
 
 // AutoMapper Configuration -----------------------------------------------------------------------
