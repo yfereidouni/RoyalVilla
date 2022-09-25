@@ -50,9 +50,10 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity, new()
         return await query.FirstOrDefaultAsync();
     }
 
-    public Task RemoveAsync(T entity)
+    public async Task RemoveAsync(T entity)
     {
-        throw new NotImplementedException();
+        _dbContext.Set<T>().Remove(entity);
+        await SaveAsync();
     }
 
     public async Task SaveAsync()
