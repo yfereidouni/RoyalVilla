@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RoyalVilla.Core.Contracts.Common;
 
-public interface IBaseRepository<T> where T : BaseEntity, new()
+public interface IBaseRepository<T> where T : class, new()
 {
     //GetAll : this method can get any LINQ Expression as a filter
     Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null);

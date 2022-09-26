@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace RoyalVilla.Core.Entities.Villas;
 
-public sealed class Villa : BaseEntity
+public sealed class Villa
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Details { get; set; }
     public double Rate { get; set; }

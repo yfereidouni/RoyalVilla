@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RoyalVilla.Infrastructures.DAL.EF.Common;
 
-public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity, new()
+public abstract class BaseRepository<T> : IBaseRepository<T> where T : class, new()
 {
     private readonly ApplicationDbContext _dbContext;
 

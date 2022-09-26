@@ -199,14 +199,16 @@ public sealed class VillasNumbersController : ControllerBase
                 return BadRequest(_response);
             }
 
-            var villaNumberUpdate =await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
-            villaNumberUpdate.VillaNo = villaDTO.VillaNo;
-            villaNumberUpdate.UpdatedDate= DateTime.Now;
-            villaNumberUpdate.SpecialDetails = villaDTO.SpecialDetails;
+            #region process-with-Id-and-BaseEntity
+            //var villaNumberUpdate = await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
+            //villaNumberUpdate.VillaNo = villaDTO.VillaNo;
+            //villaNumberUpdate.UpdatedDate= DateTime.Now;
+            //villaNumberUpdate.SpecialDetails = villaDTO.SpecialDetails;
+            #endregion
 
-            //VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
+            VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
 
-            await _villaNumberRepository.UpdateAsync(villaNumberUpdate);
+            await _villaNumberRepository.UpdateAsync(model);
 
             _response.StatusCode = System.Net.HttpStatusCode.NoContent;
             _response.IsSuccess = true;
@@ -243,13 +245,12 @@ public sealed class VillasNumbersController : ControllerBase
         //Syntax for JsonPatchDocument
         patchDTO.ApplyTo(villaDTO, ModelState);
 
-        //VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
+        VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
 
-        var villaNumberPatch = await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
-        villaNumberPatch.VillaNo = villaDTO.VillaNo;
-        villaNumberPatch.UpdatedDate = DateTime.Now;
-        villaNumberPatch.SpecialDetails = villaDTO.SpecialDetails;
-
+        //var villaNumberPatch = await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
+        //villaNumberPatch.VillaNo = villaDTO.VillaNo;
+        //villaNumberPatch.UpdatedDate = DateTime.Now;
+        //villaNumberPatch.SpecialDetails = villaDTO.SpecialDetails;
 
         if (await _villaRepository.GetAsync(u => u.Id == villaDTO.VillaId) == null)
         {
@@ -257,7 +258,7 @@ public sealed class VillasNumbersController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        await _villaNumberRepository.UpdateAsync(villaNumberPatch);
+        await _villaNumberRepository.UpdateAsync(model);
 
         if (!ModelState.IsValid)
             return BadRequest(ModelState);

@@ -13,7 +13,7 @@ public sealed class VillaNumberConfiguration : IEntityTypeConfiguration<VillaNum
 {
     public void Configure(EntityTypeBuilder<VillaNumber> builder)
     {
-        builder.Property(c => c.Id).IsRequired();
+        //builder.Property(c => c.Id).IsRequired();
         builder.Property(c => c.SpecialDetails).HasMaxLength(50);
     }
 }
