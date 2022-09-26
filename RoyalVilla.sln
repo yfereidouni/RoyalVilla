@@ -15,17 +15,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Infrastructures", "03. 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Endpoints", "04. Endpoints", "{E736D315-6368-4610-86A0-44CC1A35D945}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalVilla.Core.Entities", "Sources\01. Core\RoyalVilla.Core.Entities\RoyalVilla.Core.Entities.csproj", "{8F4B5339-405F-49E4-B0AE-AF155EF1D505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalVilla.Core.Entities", "Sources\01. Core\RoyalVilla.Core.Entities\RoyalVilla.Core.Entities.csproj", "{8F4B5339-405F-49E4-B0AE-AF155EF1D505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalVilla.Core.Contracts", "Sources\01. Core\RoyalVilla.Core.Contracts\RoyalVilla.Core.Contracts.csproj", "{B9CCEAC3-71FC-4F77-A5B4-331DE5327471}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalVilla.Core.Contracts", "Sources\01. Core\RoyalVilla.Core.Contracts\RoyalVilla.Core.Contracts.csproj", "{B9CCEAC3-71FC-4F77-A5B4-331DE5327471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalVilla.Services.ApplicationServices", "Sources\02. Services\RoyalVilla.Services.ApplicationServices\RoyalVilla.Services.ApplicationServices.csproj", "{CDB78F0D-2B01-4113-9AA1-D0C91D4CFE86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalVilla.Services.ApplicationServices", "Sources\02. Services\RoyalVilla.Services.ApplicationServices\RoyalVilla.Services.ApplicationServices.csproj", "{CDB78F0D-2B01-4113-9AA1-D0C91D4CFE86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalVilla.Infrastructures.DAL.EF", "Sources\03. Infrastructures\RoyalVilla.Infrastructures.DAL.EF\RoyalVilla.Infrastructures.DAL.EF.csproj", "{F3AD3925-B8B0-4AB0-9B48-3CE04A05019D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalVilla.Infrastructures.DAL.EF", "Sources\03. Infrastructures\RoyalVilla.Infrastructures.DAL.EF\RoyalVilla.Infrastructures.DAL.EF.csproj", "{F3AD3925-B8B0-4AB0-9B48-3CE04A05019D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalVilla.Infrastructures.DAL.Fake", "Sources\03. Infrastructures\RoyalVilla.Infrastructures.DAL.Fake\RoyalVilla.Infrastructures.DAL.Fake.csproj", "{F7A6B0A0-4960-4358-8EF1-04ED5BCBDFDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalVilla.Infrastructures.DAL.Fake", "Sources\03. Infrastructures\RoyalVilla.Infrastructures.DAL.Fake\RoyalVilla.Infrastructures.DAL.Fake.csproj", "{F7A6B0A0-4960-4358-8EF1-04ED5BCBDFDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalVilla.Endpoints.VillaAPI", "Sources\04. Endpoints\RoyalVilla.Endpoints.VillaAPI\RoyalVilla.Endpoints.VillaAPI.csproj", "{853FDFCB-1C28-4C49-84D7-8A4E89B85C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalVilla.Endpoints.VillaAPI", "Sources\04. Endpoints\RoyalVilla.Endpoints.VillaAPI\RoyalVilla.Endpoints.VillaAPI.csproj", "{853FDFCB-1C28-4C49-84D7-8A4E89B85C81}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Core", "01. Core", "{BE48775E-04AB-4F71-8C49-F537B983366B}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Infrastructures", "03. Infrastructures", "{9750D378-7661-42F5-8741-E3B7210F28C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Endpoints", "04. Endpoints", "{16D1E761-0154-40F6-8EC4-29EFFAA6D832}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalVilla.Endpoints.VillaWeb", "Sources\04. Endpoints\RoyalVilla.Endpoints.VillaWeb\RoyalVilla.Endpoints.VillaWeb.csproj", "{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{853FDFCB-1C28-4C49-84D7-8A4E89B85C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{853FDFCB-1C28-4C49-84D7-8A4E89B85C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{853FDFCB-1C28-4C49-84D7-8A4E89B85C81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{A19C75B3-C0F2-4B01-A0C7-DF30762C1E2A} = {2B55DF6D-A4F9-4C60-B8FD-F683DB1C902B}
 		{9750D378-7661-42F5-8741-E3B7210F28C2} = {2B55DF6D-A4F9-4C60-B8FD-F683DB1C902B}
 		{16D1E761-0154-40F6-8EC4-29EFFAA6D832} = {2B55DF6D-A4F9-4C60-B8FD-F683DB1C902B}
+		{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8} = {E736D315-6368-4610-86A0-44CC1A35D945}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0AA25837-A8C4-4F66-8CAC-8E0637BB125F}
