@@ -11,10 +11,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RoyalVilla.Core.Entities.VillasNumbers;
 
-public sealed class VillaNumber : BaseEntity
+public sealed class VillaNumber
 {
-    //[Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-   
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int VillaNo { get; set; }
 
     [ForeignKey("Villa")]
