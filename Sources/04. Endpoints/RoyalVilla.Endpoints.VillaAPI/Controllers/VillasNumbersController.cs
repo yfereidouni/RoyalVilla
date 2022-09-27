@@ -247,10 +247,12 @@ public sealed class VillasNumbersController : ControllerBase
 
         VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
 
+        #region process-with-Id-and-BaseEntity
         //var villaNumberPatch = await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
         //villaNumberPatch.VillaNo = villaDTO.VillaNo;
         //villaNumberPatch.UpdatedDate = DateTime.Now;
         //villaNumberPatch.SpecialDetails = villaDTO.SpecialDetails;
+        #endregion
 
         if (await _villaRepository.GetAsync(u => u.Id == villaDTO.VillaId) == null)
         {
