@@ -1,4 +1,6 @@
 using RoyalVilla.Endpoints.VillaWeb;
+using RoyalVilla.Endpoints.VillaWeb.Services;
+using RoyalVilla.Endpoints.VillaWeb.Services.IServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,9 @@ builder.Services.AddControllersWithViews();
 // AutoMapper Configuration -----------------------------------------------------------------------
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 //-------------------------------------------------------------------------------------------------
+
+builder.Services.AddHttpClient<IVillaService, VillaService>();
+builder.Services.AddScoped<IVillaService, VillaService>();
 
 var app = builder.Build();
 
