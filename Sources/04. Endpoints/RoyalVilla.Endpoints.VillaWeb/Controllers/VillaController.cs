@@ -30,4 +30,25 @@ public class VillaController : Controller
 
         return View(list);
     }
+
+    [HttpGet]
+    public IActionResult CreateVilla()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> CreateVilla(VillaCreateDTO model)
+    {
+        if (ModelState.IsValid)
+        {
+            var response = await _villaService.CreateAsync<APIResponse>(model);
+            if (response != null && response.IsSuccess == true)
+            {
+                RedirectToAction(nameof(IndexVilla));
+            }
+        }
+        return View(model);
+    }
 }

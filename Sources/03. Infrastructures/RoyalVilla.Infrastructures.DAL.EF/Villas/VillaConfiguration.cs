@@ -14,5 +14,6 @@ public sealed class VillaConfiguration : IEntityTypeConfiguration<Villa>
     public void Configure(EntityTypeBuilder<Villa> builder)
     {
         builder.Property(c => c.Id).IsRequired();
+        builder.Property(c => c.Name).IsRequired();
     }
 }
