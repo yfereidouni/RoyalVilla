@@ -35,7 +35,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Infrastructures", "03. 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Endpoints", "04. Endpoints", "{16D1E761-0154-40F6-8EC4-29EFFAA6D832}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalVilla.Endpoints.VillaWeb", "Sources\04. Endpoints\RoyalVilla.Endpoints.VillaWeb\RoyalVilla.Endpoints.VillaWeb.csproj", "{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoyalVilla.Endpoints.VillaWeb", "Sources\04. Endpoints\RoyalVilla.Endpoints.VillaWeb\RoyalVilla.Endpoints.VillaWeb.csproj", "{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalVilla.Core.Utilities", "Sources\01. Core\RoyalVilla.Core.Utilities\RoyalVilla.Core.Utilities.csproj", "{792F3105-7906-4399-B9EC-5B3183024C56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792F3105-7906-4399-B9EC-5B3183024C56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792F3105-7906-4399-B9EC-5B3183024C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792F3105-7906-4399-B9EC-5B3183024C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792F3105-7906-4399-B9EC-5B3183024C56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +97,7 @@ Global
 		{9750D378-7661-42F5-8741-E3B7210F28C2} = {2B55DF6D-A4F9-4C60-B8FD-F683DB1C902B}
 		{16D1E761-0154-40F6-8EC4-29EFFAA6D832} = {2B55DF6D-A4F9-4C60-B8FD-F683DB1C902B}
 		{7C28FF60-5264-49AF-AABF-6EC69E7EE8E8} = {E736D315-6368-4610-86A0-44CC1A35D945}
+		{792F3105-7906-4399-B9EC-5B3183024C56} = {925E18BF-8DE6-4AC5-BC5F-C0C2364EFB3A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0AA25837-A8C4-4F66-8CAC-8E0637BB125F}
