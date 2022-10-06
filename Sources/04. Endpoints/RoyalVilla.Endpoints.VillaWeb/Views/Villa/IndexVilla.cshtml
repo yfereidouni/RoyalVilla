@@ -8,7 +8,7 @@
             <h1 class="text-primary">Villa List</h1>
         </div>
         <div class="col text-end pt-1">
-            <a class="btn btn-lg btn-outline-primary"><i class="bi bi-plus-square-fill"></i> Create New Villa</a>
+            <a asp-controller="Villa" asp-action="CreateVilla" class="btn btn-outline-primary"><i class="bi bi-plus-square-fill"></i> Create New Villa</a>
         </div>
     </div>
 
@@ -29,7 +29,8 @@
                     <td>@item.Occupancy</td>
                     <td>@((item.Rate).ToString("c"))</td>
                     <td>
-
+                        <a asp-controller="Villa" asp-action="UpdateVilla" class="btn btn-sm btn-success"><i class="bi bi-pencil-square"></i></a>
+                        <a asp-controller="Villa" asp-action="DeleteVilla" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i></a>
                     </td>
                 </tr>
             }
