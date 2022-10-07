@@ -64,6 +64,7 @@ public class VillaNumberController : Controller
             var response = await _villaNumberService.CreateAsync<APIResponse>(model.VillaNumber);
             if (response != null && response.IsSuccess)
             {
+                TempData["success"] = "Villa Number created successfully!";
                 return RedirectToAction(nameof(IndexVillaNumber));
             }
             else
@@ -83,7 +84,7 @@ public class VillaNumberController : Controller
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
-                }); ;
+                });
         }
         return View(model);
     }
@@ -124,6 +125,7 @@ public class VillaNumberController : Controller
             var response = await _villaNumberService.UpdateAsync<APIResponse>(model.VillaNumber);
             if (response != null && response.IsSuccess)
             {
+                TempData["success"] = "Villa Number updated successfully!";
                 return RedirectToAction(nameof(IndexVillaNumber));
             }
             else
@@ -182,6 +184,7 @@ public class VillaNumberController : Controller
         var response = await _villaNumberService.DeleteAsync<APIResponse>(model.VillaNumber.VillaNo);
         if (response != null && response.IsSuccess)
         {
+            TempData["success"] = "Villa Number deleted successfully!";
             return RedirectToAction(nameof(IndexVillaNumber));
         }
 
