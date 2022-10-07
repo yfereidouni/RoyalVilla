@@ -51,7 +51,7 @@ public sealed class VillasNumbersController : ControllerBase
             //_logger1.LogInformation($"(Serilog) Getting All villas");
             //_logger.Log("(iLog) Getting All villas", "info");
 
-            IEnumerable<VillaNumber> villaList = await _villaNumberRepository.GetAllAsync();
+            IEnumerable<VillaNumber> villaList = await _villaNumberRepository.GetAllAsync(includeProperties: "Villa");
             _response.Result = _mapper.Map<List<VillaNumberDTO>>(villaList);
             _response.StatusCode = System.Net.HttpStatusCode.OK;
             return Ok(_response);
@@ -125,7 +125,7 @@ public sealed class VillasNumbersController : ControllerBase
 
             if (await _villaRepository.GetAsync(u => u.Id == villaDTO.VillaId) == null)
             {
-                ModelState.AddModelError("CustomError","Villa ID is Invalid!");
+                ModelState.AddModelError("CustomError", "Villa ID is Invalid!");
                 return BadRequest(ModelState);
             }
 
@@ -267,5 +267,5 @@ public sealed class VillasNumbersController : ControllerBase
 
         return NoContent();
     }
-    
+
 }
