@@ -66,16 +66,16 @@ public sealed class VillasNumbersController : ControllerBase
         return _response;
     }
 
-    [HttpGet("villaNo", Name = "GetVillaNumber")]
+    [HttpGet("{villaNo}", Name = "GetVillaNumber")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     //[ProducesResponseType(200, Type = typeof(VillaDTO))]
-    public async Task<ActionResult<APIResponse>> GetVillaNumber(int vilaNo)
+    public async Task<ActionResult<APIResponse>> GetVillaNumber(int villaNo)
     {
         try
         {
-            if (vilaNo == 0)
+            if (villaNo == 0)
             {
                 //_logger1.LogInformation($"(Serilog) Get Villa Error with Id {vilaNo}");
                 //_logger.Log($"(iLog) Get Villa Error with Id {vilaNo}", "error");
@@ -84,7 +84,7 @@ public sealed class VillasNumbersController : ControllerBase
                 return BadRequest(_response);
             }
 
-            var villa = await _villaNumberRepository.GetAsync(c => c.VillaNo == vilaNo);
+            var villa = await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
 
             if (villa == null)
             {
@@ -119,13 +119,13 @@ public sealed class VillasNumbersController : ControllerBase
 
             if (await _villaNumberRepository.GetAsync(u => u.VillaNo == villaDTO.VillaNo) != null)
             {
-                ModelState.AddModelError("", "VillaNumber already exists!");
+                ModelState.AddModelError("ErrorMessages", "VillaNumber already exists!");
                 return BadRequest(ModelState);
             }
 
             if (await _villaRepository.GetAsync(u => u.Id == villaDTO.VillaId) == null)
             {
-                ModelState.AddModelError("CustomError", "Villa ID is Invalid!");
+                ModelState.AddModelError("ErrorMessages", "Villa ID is Invalid!");
                 return BadRequest(ModelState);
             }
 
@@ -148,7 +148,7 @@ public sealed class VillasNumbersController : ControllerBase
         return _response;
     }
 
-    [HttpDelete("villaNo", Name = "DeleteVillaNumber")]
+    [HttpDelete("{villaNo}", Name = "DeleteVillaNumber")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -185,7 +185,7 @@ public sealed class VillasNumbersController : ControllerBase
         return _response;
     }
 
-    [HttpPut("villaNo", Name = "UpdateVillaNumber")]
+    [HttpPut("{villaNo}", Name = "UpdateVillaNumber")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -225,7 +225,7 @@ public sealed class VillasNumbersController : ControllerBase
 
     }
 
-    [HttpPatch("villaNo", Name = "UpdatePartialVillaNumber")]
+    [HttpPatch("{villaNo}", Name = "UpdatePartialVillaNumber")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -256,7 +256,7 @@ public sealed class VillasNumbersController : ControllerBase
 
         if (await _villaRepository.GetAsync(u => u.Id == villaDTO.VillaId) == null)
         {
-            ModelState.AddModelError("CustomError", "Villa ID is Invalid!");
+            ModelState.AddModelError("ErrorMessages", "Villa ID is Invalid!");
             return BadRequest(ModelState);
         }
 

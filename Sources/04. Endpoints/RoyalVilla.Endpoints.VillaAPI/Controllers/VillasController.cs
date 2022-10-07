@@ -103,7 +103,7 @@ public sealed class VillasController : ControllerBase
 
             if (await _villaRepository.GetAsync(u => u.Name.ToLower() == villaDTO.Name.ToLower()) != null)
             {
-                ModelState.AddModelError("", "Villa already exists!");
+                ModelState.AddModelError("ErrorMessages", "Villa already exists!");
                 return BadRequest(ModelState);
             }
 
