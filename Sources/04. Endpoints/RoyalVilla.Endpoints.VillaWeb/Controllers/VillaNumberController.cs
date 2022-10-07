@@ -24,12 +24,12 @@ public class VillaNumberController : Controller
 
     public async Task<IActionResult> IndexVillaNumber()
     {
-        List<VillaDTO> list = new();
+        List<VillaNumberDTO> list = new();
 
-        var response = await _villaService.GetAllAsync<APIResponse>();
+        var response = await _villaNumberService.GetAllAsync<APIResponse>();
         if (response != null && response.IsSuccess)
         {
-            list = JsonConvert.DeserializeObject<List<VillaDTO>>(Convert.ToString(response.Result));
+            list = JsonConvert.DeserializeObject<List<VillaNumberDTO>>(Convert.ToString(response.Result));
         }
 
         return View(list);
