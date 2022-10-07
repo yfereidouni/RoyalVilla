@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using RoyalVilla.Core.Contracts.Villas;
+using RoyalVilla.Core.Contracts.LocalUsers;
 using RoyalVilla.Core.Contracts.VillasNumbers;
 using RoyalVilla.Core.Entities.VillasNumbers;
 using RoyalVilla.Endpoints.VillaAPI.Models;
@@ -16,14 +16,14 @@ namespace MagicVilla.VillaAPI.Controllers;
 public sealed class VillasNumbersController : ControllerBase
 {
     protected APIResponse _response;
-    private readonly IVillaRepository _villaRepository;
+    private readonly ILocalUserRepository _villaRepository;
     private readonly IVillaNumberRepository _villaNumberRepository;
     private readonly IMapper _mapper;
     //private readonly ILogging _logger;
     private readonly ILogger<VillasNumbersController> _logger1;
 
     public VillasNumbersController(
-        IVillaRepository villaRepository,
+        ILocalUserRepository villaRepository,
         IVillaNumberRepository villaNumberRepository,
         IMapper mapper,
         //ILogging logger,

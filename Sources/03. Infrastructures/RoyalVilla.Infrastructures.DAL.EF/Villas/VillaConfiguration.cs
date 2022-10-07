@@ -82,6 +82,6 @@ public sealed class VillaConfiguration : IEntityTypeConfiguration<Villa>
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now.AddDays(1),
             }
-        );
+            );
     }
 }

@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RoyalVilla.Core.Contracts.Villas;
+﻿using Microsoft.AspNetCore.Mvc;
 using RoyalVilla.Core.Entities.Villas;
 using RoyalVilla.Endpoints.VillaAPI.Models.DTOs;
 using RoyalVilla.Endpoints.VillaAPI.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
+using RoyalVilla.Core.Contracts.Villas;
 
 namespace RoyalVilla.Endpoints.VillaAPI.Controllers;
 
