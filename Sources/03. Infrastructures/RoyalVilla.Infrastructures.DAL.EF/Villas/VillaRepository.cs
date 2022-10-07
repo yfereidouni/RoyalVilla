@@ -1,6 +1,11 @@
 ﻿using RoyalVilla.Core.Contracts.Villas;
 using RoyalVilla.Core.Entities.Villas;
 using RoyalVilla.Infrastructures.DAL.EF.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RoyalVilla.Infrastructures.DAL.EF.Villas;
 

@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RoyalVilla.Core.Entities.LocalUsers;
 using RoyalVilla.Core.Entities.Villas;
 using RoyalVilla.Core.Entities.VillasNumbers;
-using RoyalVilla.Infrastructures.DAL.EF.LocalUsers;
 using RoyalVilla.Infrastructures.DAL.EF.Villas;
 using RoyalVilla.Infrastructures.DAL.EF.VillasNumbers;
 using System;
@@ -20,14 +18,12 @@ public sealed class ApplicationDbContext : DbContext
 
     public DbSet<Villa> Villas { get; set; }
     public DbSet<VillaNumber> VillasNumbers { get; set; }
-    public DbSet<LocalUser> LocalUsers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new VillaConfiguration());
         modelBuilder.ApplyConfiguration(new VillaNumberConfiguration());
-        modelBuilder.ApplyConfiguration(new LocalUserConfiguration());
-
+        
         modelBuilder.Entity<VillaNumber>().HasIndex(p => p.VillaNo).IsUnique();
 
         base.OnModelCreating(modelBuilder);

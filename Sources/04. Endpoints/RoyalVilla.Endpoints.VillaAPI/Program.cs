@@ -1,12 +1,10 @@
+using RoyalVilla.Core.Contracts.Villas;
+using RoyalVilla.Infrastructures.DAL.EF.Villas;
 using RoyalVilla.Endpoints.VillaAPI;
 using RoyalVilla.Infrastructures.DAL.EF.Common;
 using Microsoft.EntityFrameworkCore;
 using RoyalVilla.Core.Contracts.VillasNumbers;
 using RoyalVilla.Infrastructures.DAL.EF.VillasNumbers;
-using RoyalVilla.Infrastructures.DAL.EF.LocalUsers;
-using RoyalVilla.Core.Contracts.LocalUsers;
-using RoyalVilla.Infrastructures.DAL.EF.Villas;
-using RoyalVilla.Core.Contracts.Villas;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +18,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
-builder.Services.AddScoped<ILocalUserRepository, LocalUserRepository>();
 builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
 
