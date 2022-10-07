@@ -23,7 +23,7 @@ public sealed class ApplicationDbContext : DbContext
     {
         modelBuilder.ApplyConfiguration(new VillaConfiguration());
         modelBuilder.ApplyConfiguration(new VillaNumberConfiguration());
-
+        
         modelBuilder.Entity<VillaNumber>().HasIndex(p => p.VillaNo).IsUnique();
 
         base.OnModelCreating(modelBuilder);
