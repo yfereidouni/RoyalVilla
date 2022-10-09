@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoyalVilla.Core.Entities.LocalUsers;
 
-public class LocalUser
+public sealed class LocalUser
 {
     public int Id { get; set; }
     public string UserName { get; set; }
