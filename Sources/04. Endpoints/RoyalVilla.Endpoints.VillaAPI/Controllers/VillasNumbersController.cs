@@ -1,16 +1,12 @@
 ﻿using AutoMapper;
-
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RoyalVilla.Core.Contracts.Villas;
 using RoyalVilla.Core.Contracts.VillasNumbers;
-using RoyalVilla.Core.Entities.Villas;
 using RoyalVilla.Core.Entities.VillasNumbers;
 using RoyalVilla.Endpoints.VillaAPI.Models;
 using RoyalVilla.Endpoints.VillaAPI.Models.DTOs;
-using System.Reflection.Metadata;
+using System.Net;
 
 namespace MagicVilla.VillaAPI.Controllers;
 
@@ -66,25 +62,25 @@ public sealed class VillasNumbersController : ControllerBase
         return _response;
     }
 
-    [HttpGet("villaNo", Name = "GetVillaNumber")]
+    [HttpGet("{villaNo:int}", Name = "GetVillaNumber")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     //[ProducesResponseType(200, Type = typeof(VillaDTO))]
-    public async Task<ActionResult<APIResponse>> GetVillaNumber(int vilaNo)
+    public async Task<ActionResult<APIResponse>> GetVillaNumber(int villaNo)
     {
         try
         {
-            if (vilaNo == 0)
+            if (villaNo == 0)
             {
-                //_logger1.LogInformation($"(Serilog) Get Villa Error with Id {vilaNo}");
-                //_logger.Log($"(iLog) Get Villa Error with Id {vilaNo}", "error");
+                //_logger1.LogInformation($"(Serilog) Get Villa Error with Id {villaNo}");
+                //_logger.Log($"(iLog) Get Villa Error with Id {villaNo}", "error");
 
                 _response.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 return BadRequest(_response);
             }
 
-            var villa = await _villaNumberRepository.GetAsync(c => c.VillaNo == vilaNo);
+            var villa = await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
 
             if (villa == null)
             {
@@ -119,36 +115,37 @@ public sealed class VillasNumbersController : ControllerBase
 
             if (await _villaNumberRepository.GetAsync(u => u.VillaNo == villaDTO.VillaNo) != null)
             {
-                ModelState.AddModelError("", "VillaNumber already exists!");
+                ModelState.AddModelError("ErrorMessages", "Villa Number already Exists!");
                 return BadRequest(ModelState);
             }
-
-            if (await _villaRepository.GetAsync(u => u.Id == villaDTO.VillaId) == null)
+            if (await _villaNumberRepository.GetAsync(u => u.VillaNo == villaDTO.VillaNo) != null)
             {
-                ModelState.AddModelError("CustomError", "Villa ID is Invalid!");
+                ModelState.AddModelError("ErrorMessages", "Villa ID is Invalid!");
                 return BadRequest(ModelState);
             }
+            if (villaDTO == null)
+            {
+                return BadRequest(villaDTO);
+            }
 
-            if (villaDTO is null)
-                return BadRequest();
+            VillaNumber villaNumber = _mapper.Map<VillaNumber>(villaDTO);
 
-            VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
-            await _villaNumberRepository.CreateAsync(model);
-            _response.Result = _mapper.Map<VillaNumber>(villaDTO);
-            _response.StatusCode = System.Net.HttpStatusCode.Created;
-            return CreatedAtRoute("GetVillaNumber", new { id = model.VillaNo }, _response);
+
+            await _villaNumberRepository.CreateAsync(villaNumber);
+            _response.Result = _mapper.Map<VillaNumberDTO>(villaNumber);
+            _response.StatusCode = HttpStatusCode.Created;
+            return CreatedAtRoute("GetVilla", new { id = villaNumber.VillaNo }, _response);
         }
         catch (Exception ex)
         {
             _response.IsSuccess = false;
             _response.ErrorMessages
-                = new List<string>() { ex.ToString() };
+                 = new List<string>() { ex.ToString() };
         }
-
         return _response;
     }
 
-    [HttpDelete("villaNo", Name = "DeleteVillaNumber")]
+    [HttpDelete("{villaNo:int}", Name = "DeleteVillaNumber")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -185,7 +182,7 @@ public sealed class VillasNumbersController : ControllerBase
         return _response;
     }
 
-    [HttpPut("villaNo", Name = "UpdateVillaNumber")]
+    [HttpPut("{villaNo:int}", Name = "UpdateVillaNumber")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -199,12 +196,11 @@ public sealed class VillasNumbersController : ControllerBase
                 return BadRequest(_response);
             }
 
-            #region process-with-Id-and-BaseEntity
-            //var villaNumberUpdate = await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
-            //villaNumberUpdate.VillaNo = villaDTO.VillaNo;
-            //villaNumberUpdate.UpdatedDate= DateTime.Now;
-            //villaNumberUpdate.SpecialDetails = villaDTO.SpecialDetails;
-            #endregion
+            if (await _villaRepository.GetAsync(u => u.Id == villaDTO.VillaId) == null)
+            {
+                ModelState.AddModelError("ErrorMessages", "Villa ID is Invalid!");
+                return BadRequest(ModelState);
+            }
 
             VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
 
@@ -222,10 +218,9 @@ public sealed class VillasNumbersController : ControllerBase
         }
 
         return _response;
-
     }
 
-    [HttpPatch("villaNo", Name = "UpdatePartialVillaNumber")]
+    [HttpPatch("{villaNo:int}", Name = "UpdatePartialVillaNumber")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -244,19 +239,11 @@ public sealed class VillasNumbersController : ControllerBase
 
         //Syntax for JsonPatchDocument
         patchDTO.ApplyTo(villaDTO, ModelState);
-
         VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
-
-        #region process-with-Id-and-BaseEntity
-        //var villaNumberPatch = await _villaNumberRepository.GetAsync(c => c.VillaNo == villaNo);
-        //villaNumberPatch.VillaNo = villaDTO.VillaNo;
-        //villaNumberPatch.UpdatedDate = DateTime.Now;
-        //villaNumberPatch.SpecialDetails = villaDTO.SpecialDetails;
-        #endregion
 
         if (await _villaRepository.GetAsync(u => u.Id == villaDTO.VillaId) == null)
         {
-            ModelState.AddModelError("CustomError", "Villa ID is Invalid!");
+            ModelState.AddModelError("ErrorMessages", "Villa ID is Invalid!");
             return BadRequest(ModelState);
         }
 
