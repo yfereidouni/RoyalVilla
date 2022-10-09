@@ -4,7 +4,7 @@
 
 <form asp-controller="VillaNumber" asp-action="UpdateVillaNumber" method="post">
     <br />
-    <div class="container border p-3">
+    <div class="container p-3">
         <h1 class="text-primary">Update Villa</h1>
         <hr />
 
@@ -15,7 +15,7 @@
                 <label asp-for="VillaNumber.VillaNo" class="control-label pt-2" style="font-size:20px;"></label>
             </div>
             <div class="col-10 pb-2">
-                <input asp-for="VillaNumber.VillaNo" class="form-control" />
+                <input asp-for="VillaNumber.VillaNo" readonly class="form-control" />
                 <span asp-validation-for="VillaNumber.VillaNo" class="text-danger"></span>
             </div>
 
@@ -39,11 +39,11 @@
 
 
             <div class="col-5 offset-2 pb-2">
-                <a asp-action="IndexVillaNumber" asp-controller="VillaNumber" class="btn btn-lg btn-primary form-control">Back to List</a>
+                <a asp-action="IndexVillaNumber" asp-controller="VillaNumber" class="btn btn-primary form-control">Back to List</a>
             </div>
 
             <div class="col-5 pb-2">
-                <input type="submit" value="Update" class="btn btn-lg btn-success form-control" />
+                <input type="submit" value="Update" class="btn btn-success form-control" />
             </div>
 
         </div>
